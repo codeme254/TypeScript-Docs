@@ -21,5 +21,7 @@
         <toc-element topic="Top-Types.md"/>
         <toc-element topic="Bottom-Types.md"/>
         <toc-element topic="Object-Types.md"/>
+        <toc-element topic="Type-Inference.md"/>
+        <toc-element topic="Type-Assertion.md"/>
     </toc-element>
 </instance-profile>
