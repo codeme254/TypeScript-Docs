@@ -16,7 +16,9 @@
         </toc-element>
     </toc-element>
     <toc-element topic="TypeScript-Types.md">
-        <toc-element topic="Primitive-Types.md"/>
+        <toc-element topic="Primitive-Types.md">
+        </toc-element>
         <toc-element topic="Top-Types.md"/>
+        <toc-element topic="Bottom-Types.md"/>
     </toc-element>
 </instance-profile>
