@@ -21,7 +21,7 @@ myVariable = 44; // valid
 myVariable = false; // invalid
 ```
 
-## Type Aliases
+## Type Aliases (`type`)
 A type alias gives a **custom name** to a type, making complex types easier to read and reuse.
 
 Type aliases use the `type` keyword.
@@ -53,7 +53,7 @@ const john: User = {
 console.log(john);
 ```
 
-## Intersection Types
+## Intersection Types (`&`)
 An intersection type combines multiple types into one, meaning the variable must satisfy all types.
 
 Intersection types allow you to combine multiple types into one.
