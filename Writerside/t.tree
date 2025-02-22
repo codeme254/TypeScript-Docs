@@ -20,5 +20,6 @@
         </toc-element>
         <toc-element topic="Top-Types.md"/>
         <toc-element topic="Bottom-Types.md"/>
+        <toc-element topic="Object-Types.md"/>
     </toc-element>
 </instance-profile>
