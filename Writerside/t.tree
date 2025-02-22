@@ -24,4 +24,5 @@
         <toc-element topic="Type-Inference.md"/>
         <toc-element topic="Type-Assertion.md"/>
     </toc-element>
+    <toc-element topic="Combining-Types.md"/>
 </instance-profile>
