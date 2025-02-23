@@ -29,4 +29,5 @@
     <toc-element topic="Type-Guards-Narrowing.md"/>
     <toc-element topic="Classes.md"/>
     <toc-element topic="Generics.md"/>
+    <toc-element topic="Utility-Types.md"/>
 </instance-profile>
