@@ -27,4 +27,5 @@
     <toc-element topic="Combining-Types.md"/>
     <toc-element topic="Typing-Functions.md"/>
     <toc-element topic="Type-Guards-Narrowing.md"/>
+    <toc-element topic="Classes.md"/>
 </instance-profile>
