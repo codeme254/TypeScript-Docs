@@ -24,7 +24,10 @@
         <toc-element topic="Type-Inference.md"/>
         <toc-element topic="Type-Assertion.md"/>
     </toc-element>
-    <toc-element topic="Combining-Types.md"/>
+    <toc-element topic="Combining-Types.md">
+
+    </toc-element>
+    <toc-element topic="Literal-Types.md"/>
     <toc-element topic="Typing-Functions.md"/>
     <toc-element topic="Type-Guards-Narrowing.md"/>
     <toc-element topic="Classes.md"/>
