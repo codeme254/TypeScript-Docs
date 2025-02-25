@@ -1,0 +1,150 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-02-25T09:05:54.7257943"><title>Classes | TypeScript</title><script type="application/json" id="virtual-toc-data">[{"id":"declaring-a-class-in-typescript","level":0,"title":"Declaring a Class in TypeScript","anchor":"#declaring-a-class-in-typescript"},{"id":"access-modifiers","level":0,"title":"Access Modifiers","anchor":"#access-modifiers"},{"id":"abstract-classes","level":0,"title":"Abstract Classes","anchor":"#abstract-classes"},{"id":"classes-and-interfaces","level":0,"title":"Classes and Interfaces","anchor":"#classes-and-interfaces"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Classes | TypeScript"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="TypeScript Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/classes.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Classes | TypeScript"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/classes.html#webpage",
+    "url": "writerside-documentation/classes.html",
+    "name": "Classes | TypeScript",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "TypeScript Help"
+}</script><!-- End Schema.org --></head><body data-id="Classes" data-main-title="Classes" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>TypeScript  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Classes" id="Classes.md">Classes</h1><p id="-29ojc0_3">Classes in TypeScript provide a way to create reusable blueprints for objects, following object-oriented programming (OOP) principles.</p><section class="chapter"><h2 id="declaring-a-class-in-typescript" data-toc="declaring-a-class-in-typescript">Declaring a Class in TypeScript</h2><p id="-29ojc0_8">A class is defined using the class keyword. It can have properties and methods.</p><div class="code-block" data-lang="ts">
+class Person {
+  name: string;
+  age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+
+  greet(): void {
+    console.log(`Hello, my name is ${this.name}`);
+  }
+}
+
+const person1 = new Person(&quot;John&quot;, 25);
+person1.greet();
+</div><ul class="list _bullet" id="-29ojc0_10"><li class="list__item" id="-29ojc0_11"><p><code class="code" id="-29ojc0_14">name</code> and <code class="code" id="-29ojc0_15">age</code> are properties.</p></li><li class="list__item" id="-29ojc0_12"><p>The <code class="code" id="-29ojc0_16">constructor</code> initializes the properties when creating an instance.</p></li><li class="list__item" id="-29ojc0_13"><p><code class="code" id="-29ojc0_17">greet</code> is a method (a function inside a class/an object).</p></li></ul></section><section class="chapter"><h2 id="access-modifiers" data-toc="access-modifiers">Access Modifiers</h2><p id="-29ojc0_18">In object-oriented programming, access modifiers are keywords that set the accessibility (visibility) of classes, methods, and properties.</p><p id="-29ojc0_19">They control whether certain elements of a class can be accessed from outside the class or from within other classes, enforcing encapsulation and protecting data integrity.</p><p id="-29ojc0_20">JavaScript traditionally doesn't have access modifiers like other languages.</p><p id="-29ojc0_21">TypeScript, however, supports access modifiers.</p><p id="-29ojc0_22">The three access modifiers are:</p><ul class="list _bullet" id="-29ojc0_23"><li class="list__item" id="-29ojc0_27"><p><span class="control" id="-29ojc0_30">public</span>: default, accessible anywhere.</p></li><li class="list__item" id="-29ojc0_28"><p><span class="control" id="-29ojc0_31">private</span>: accessible only within the class</p></li><li class="list__item" id="-29ojc0_29"><p><span class="control" id="-29ojc0_32">protected</span>: accessible within the class and subclasses.</p></li></ul><section class="chapter"><h3 id="private" data-toc="private">private</h3><p id="-29ojc0_33">When we mark a property or method as private, it can only be accessed within the class where it is defined.</p><p id="-29ojc0_34">This restricts direct access from outside the class (including subclasses), promoting encapsulation and safeguarding the data from unintended modifications.</p><div class="code-block" data-lang="ts">
+class Person {
+  private name: string;
+  private age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+
+  greet(): void {
+    console.log(`Hello, my name is ${this.name}`);
+  }
+
+  private sayGoodbye(): void {
+    console.log(`Goodbye`);
+  }
+}
+
+const person1 = new Person(&quot;John&quot;, 25);
+person1.greet();
+
+console.log(person1.name); // will not work
+person1.sayGoodbye(); // will not work as well
+</div></section><section class="chapter"><h3 id="protected" data-toc="protected">protected</h3><p id="-29ojc0_36">A modifier that allows a property or method to be accessed within its own class and subclasses, but not from outside.</p><p id="-29ojc0_37">When you mark a property or a method as protected, it can only be accessed within the class or within the classes that inherit from it but not outside.</p><div class="code-block" data-lang="ts">
+class Person {
+  protected name: string;
+  protected age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+
+  greet(): void {
+    console.log(`Hello, my name is ${this.name}`);
+  }
+}
+
+class Student extends Person {
+  sayGoodbye() {
+    console.log(`Goodbye, this has been ${this.name}`);
+  }
+}
+
+const john = new Student(&quot;John&quot;, 25);
+john.sayGoodbye(); // works
+console.log(john.name); 
+// Property 'name' is protected and only accessible within class 'Person' and its subclasses
+</div></section><section class="chapter"><h3 id="public" data-toc="public">Public</h3><p id="-29ojc0_39">Public is the default access modifier, which means the property can be accessed from anywhere.</p><div class="code-block" data-lang="ts">
+class Person {
+  name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  greet(): void {
+    console.log(`Hello, my name is ${this.name}`);
+  }
+}
+
+const john = new Person(&quot;John&quot;);
+john.greet();
+</div></section></section><section class="chapter"><h2 id="abstract-classes" data-toc="abstract-classes">Abstract Classes</h2><p id="-29ojc0_41">An abstract class refers to a restricted class that cannot be used to create objects and designed to be specifically used as a base class.</p><p id="-29ojc0_42">An abstract class serves as a base class that cannot be instantiated but can define common methods for subclasses.</p><p id="-29ojc0_43">You cannot create an instance of an abstract class, you can extend it, override functionality, but you can't instantiate it.</p><p id="-29ojc0_44">Abstract classes can be used as 'blueprint for other classes.'</p><p id="-29ojc0_45">An abstract class is defined using the <code class="code" id="-29ojc0_48">abstract</code> keyword.</p><p id="-29ojc0_46">Subclasses must implement any methods inside an abstract class marked with the <code class="code" id="-29ojc0_49">abstract</code> keyword.</p><div class="code-block" data-lang="ts">
+abstract class Animal {
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+  // The method below must be implemented by subclasses
+  abstract makeSound(): void;
+
+  move(): void {
+    console.log(`Animal moving`);
+  }
+}
+
+class Dog extends Animal {
+  makeSound(): void {
+    console.log(&quot;Bark!&quot;);
+  }
+}
+
+const dog = new Dog(&quot;Jimmy&quot;);
+console.log(dog.name);
+dog.makeSound();
+dog.move();
+</div></section><section class="chapter"><h2 id="classes-and-interfaces" data-toc="classes-and-interfaces">Classes and Interfaces</h2><p id="-29ojc0_50">Classes can also implement interfaces.</p><p id="-29ojc0_51">A class can implement an interface, enforcing that it follows a specific structure.</p><p id="-29ojc0_52">Interfaces don't implement any functionality or behavior, this is their fundamental difference from abstract classes, abstract classes can implement some methods.</p><div class="code-block" data-lang="ts">
+interface Animal {
+  name: string;
+  age: number;
+  makeSound: () =&gt; void;
+  move: (numLegs: number) =&gt; void;
+}
+
+class Dog implements Animal {
+  name: string;
+  age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+
+  makeSound(): void {
+    console.log(&quot;Bark!&quot;);
+  }
+
+  move(numLegs: number): void {
+    console.log(`Dog moving with ${numLegs} legs`);
+  }
+}
+
+const dog = new Dog(&quot;Jimmy&quot;, 5);
+dog.makeSound();
+dog.move(4);
+</div></section><div class="last-modified">Last modified: 25 February 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="type-guards-narrowing.html" class="navigation-links__prev">Type Guards/Narrowing</a><a href="generics.html" class="navigation-links__next">Generics</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.js"></script></body></html>

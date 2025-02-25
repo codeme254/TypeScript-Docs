@@ -1,0 +1,79 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-02-25T09:05:54.742794"><title>Type Assertion | TypeScript</title><script type="application/json" id="virtual-toc-data">[{"id":"as-assertions","level":0,"title":"as assertions","anchor":"#as-assertions"},{"id":"as-any","level":0,"title":"as any","anchor":"#as-any"},{"id":"as-const-making-values-immutable","level":0,"title":"as const (making values immutable)","anchor":"#as-const-making-values-immutable"},{"id":"non-null-assertions","level":0,"title":"Non-Null Assertions (!)","anchor":"#non-null-assertions"},{"id":"satisfies-keyword","level":0,"title":"satisfies keyword","anchor":"#satisfies-keyword"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Type Assertion | TypeScript"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="TypeScript Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/type-assertion.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Type Assertion | TypeScript"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/type-assertion.html#webpage",
+    "url": "writerside-documentation/type-assertion.html",
+    "name": "Type Assertion | TypeScript",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "TypeScript Help"
+}</script><!-- End Schema.org --></head><body data-id="Type-Assertion" data-main-title="Type Assertion" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="TypeScript-Types.md|TypeScript Types"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>TypeScript  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Type-Assertion" id="Type-Assertion.md">Type Assertion</h1><p id="-fk3daj_3">Type Assertion is another way of telling the TypeScript compiler about the type of value a variable is going to store.</p><p id="-fk3daj_4">Type assertions in TypeScript allow you to override the <a href="type-inference.html" id="-fk3daj_12" data-tooltip="Type inference in TypeScript is the ability of the compiler to automatically determine the type of a variable based on its assigned value, without explicitly specifying the type.">inferred</a> type of a variable.</p><p id="-fk3daj_5">Type assertion in TypeScript is a powerful way to tell the compiler about the type of a variable when you have better knowledge about it than TypeScript's type inference.</p><p id="-fk3daj_6">Type assertion can be done in the following ways:</p><section class="chapter"><h2 id="as-assertions" data-toc="as-assertions"><code class="code" id="-fk3daj_23">as</code> assertions</h2><p id="-fk3daj_14">The <code class="code" id="-fk3daj_24">as</code> keyword is the most common way to assert a type.</p><p id="-fk3daj_15">It tells TypeScript, <span class="control" id="-fk3daj_25">&quot;I know this value better than you do.&quot;</span></p><p id="-fk3daj_16">The syntax is:</p><div class="code-block" data-lang="ts">
+let value = someValue as Type;
+</div><p id="-fk3daj_18">In the example below, we will get an error: <code class="code" id="-fk3daj_26">Property 'length' does not exist on type 'unknown'</code></p><div class="code-block" data-lang="ts">
+let str: unknown = &quot;Hello, World&quot;;
+let stringLength = str.length; // 'str' is of type unknown
+console.log(stringLength);
+</div><p id="-fk3daj_20">For the code to work, we need to tell TypeScript <span class="control" id="-fk3daj_27">&quot;I know better than you do, the type is string&quot;</span>, we do this using the <code class="code" id="-fk3daj_28">as</code> keyword as shown:</p><div class="code-block" data-lang="ts">
+let str: unknown = &quot;Hello, World&quot;;
+let stringLength = (str as string).length; // 'str' is of type unknown
+console.log(stringLength);
+</div><p id="-fk3daj_22">TypeScript will now treat <code class="code" id="-fk3daj_29">str</code> as a <code class="code" id="-fk3daj_30">string</code>, allowing us to safely access <code class="code" id="-fk3daj_31">.length</code>.</p></section><section class="chapter"><h2 id="as-any" data-toc="as-any"><code class="code" id="-fk3daj_36">as any</code></h2><p id="-fk3daj_33">Using <code class="code" id="-fk3daj_37">as any</code> turns off TypeScript's type checking, allowing any operation on the value.</p><p id="-fk3daj_34"><span class="control" id="-fk3daj_38"><code class="code" id="-fk3daj_39">as any</code> should be avoided unless absolutely necessary, as it removes all type safety.</span></p><div class="code-block" data-lang="ts">
+let num: unknown = 55;
+let something = (num as any).length; // No TypeScript error
+</div></section><section class="chapter"><h2 id="as-const-making-values-immutable" data-toc="as-const-making-values-immutable"><code class="code" id="-fk3daj_44">as const</code> (making values immutable)</h2><p id="-fk3daj_41">The <code class="code" id="-fk3daj_45">as const</code> assertion treats a value as a read-only constant, preventing modifications.</p><div class="code-block" data-lang="ts">
+let directions = [&quot;N&quot;, &quot;E&quot;, &quot;W&quot;, &quot;S&quot;] as const;
+directions.push(&quot;NW&quot;);
+// Property 'push' does not exist on type 'readonly' [&quot;N&quot;, &quot;E&quot;, &quot;W&quot;, &quot;S&quot;]
+console.log(directions);
+</div><p id="-fk3daj_43">When we explicitly type the variables, then <code class="code" id="-fk3daj_46">as const</code> will have no effect, this is because <code class="code" id="-fk3daj_47">as const</code> only works when applied to values, not to variables explicitly typed</p></section><section class="chapter"><h2 id="non-null-assertions" data-toc="non-null-assertions">Non-Null Assertions (<code class="code" id="-fk3daj_55">!</code>)</h2><p id="-fk3daj_49">The non-null assertion operator (!) tells TypeScript, <span class="control" id="-fk3daj_56">&quot;I guarantee this value is not null or undefined.&quot;</span></p><p id="-fk3daj_50">It tells the compiler that a value is not <code class="code" id="-fk3daj_57">null</code> or <code class="code" id="-fk3daj_58">undefined</code>, even if its type suggests it could be.</p><p id="-fk3daj_51">In the example below, since we have declared in the interface that the age property is optional, TypeScript will complain that <code class="code" id="-fk3daj_59">john.age</code> might be undefined when we try to use it as shown:</p><div class="code-block" data-lang="ts">
+interface Person {
+  firstName: string;
+  lastName: string;
+  age?: number;
+}
+
+let john: Person = {
+  firstName: &quot;John&quot;,
+  lastName: &quot;Doe&quot;,
+  age: 35,
+};
+
+if (john.age &gt; 18) {// 'john.age' is possibly 'undefined'
+  console.log(&quot;John is an adult&quot;);
+}
+</div><p id="-fk3daj_53">We can assure TypeScript that <code class="code" id="-fk3daj_60">john.age</code> is not <code class="code" id="-fk3daj_61">null</code> or <code class="code" id="-fk3daj_62">undefined</code> through non-null assertion (<code class="code" id="-fk3daj_63">!</code>) as shown:</p><div class="code-block" data-lang="ts">
+interface Person {
+  firstName: string;
+  lastName: string;
+  age?: number;
+}
+
+let john: Person = {
+  firstName: &quot;John&quot;,
+  lastName: &quot;Doe&quot;,
+  age: 35,
+};
+
+if (john.age! &gt; 18) {
+  console.log(&quot;John is an adult&quot;);
+}
+
+</div></section><section class="chapter"><h2 id="satisfies-keyword" data-toc="satisfies-keyword"><code class="code" id="-fk3daj_69">satisfies</code> keyword</h2><p id="-fk3daj_65">The <code class="code" id="-fk3daj_70">satisfies</code> operator checks if a given type satisfies a specific interface.</p><p id="-fk3daj_66">It ensures that a type has all the required properties and methods of a specific interface, allowing a variable to fit into a definition of a type</p><p id="-fk3daj_67">In other words, it ensures that a type has all the required properties and methods of a specific interface.</p><div class="code-block" data-lang="ts">
+interface Person {
+  firstName: string;
+  lastName: string;
+  age?: number;
+}
+
+let john = {
+  firstName: &quot;John&quot;,
+  lastName: &quot;Doe&quot;,
+  age: 35,
+} satisfies Person;
+</div></section><div class="last-modified">Last modified: 25 February 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="type-inference.html" class="navigation-links__prev">Type Inference</a><a href="combining-types.html" class="navigation-links__next">Combining Types</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.js"></script></body></html>

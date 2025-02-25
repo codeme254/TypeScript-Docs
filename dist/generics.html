@@ -1,0 +1,115 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-02-25T09:05:54.7477913"><title>Generics | TypeScript</title><script type="application/json" id="virtual-toc-data">[{"id":"generic-types","level":0,"title":"Generic Types","anchor":"#generic-types"},{"id":"generic-constraints","level":0,"title":"Generic Constraints","anchor":"#generic-constraints"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Generics | TypeScript"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="TypeScript Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/generics.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Generics | TypeScript"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/generics.html#webpage",
+    "url": "writerside-documentation/generics.html",
+    "name": "Generics | TypeScript",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "TypeScript Help"
+}</script><!-- End Schema.org --></head><body data-id="Generics" data-main-title="Generics" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>TypeScript  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Generics" id="Generics.md">Generics</h1><p id="muzm3s_3">Generics allow you to define a placeholder type that can be specified when the construct(e.g. function, class e.t.c) is used, making the code more flexible and type-safe.</p><p id="muzm3s_4">Consider the code below:</p><div class="code-block" data-lang="ts">
+class DataStore {
+  private data: number[] = [];
+
+  addItem(item: number): void {
+    this.data.push(item);
+  }
+
+  getItem(idx: number): number | null {
+    if (idx &lt; 0 || idx &gt;= this.data.length) return null;
+    return this.data[idx];
+  }
+
+  getAllItems(): number[] {
+    return this.data;
+  }
+}
+</div><p id="muzm3s_6">The code above is an implementation for a DataStore class that only stores numbers.</p><p id="muzm3s_7">What if we wanted to now store strings or even booleans? We would have to copy the entire class and maybe start changing the data types.</p><p id="muzm3s_8">But this is not really what we would want to do, and it doesn't make sense when the only thing we want to change in our class is the type that we are using.</p><p id="muzm3s_9">We need a way to variably be able to pass in a type and use a different type based on the instance of the class that we need.</p><p id="muzm3s_10">This is where generics come in.</p><p id="muzm3s_11">In TypeScript, generics are a way to create reusable components that can work with different data types.</p><p id="muzm3s_12"><span class="control" id="muzm3s_18">Generics allow you to define a placeholder type that can be specified when the component is used, making the code more flexible and type-safe.</span></p><p id="muzm3s_13">A generic is defined by placing a type parameter in angle brackets <code class="code" id="muzm3s_19">&lt;T&gt;</code> after the function, class, or interface name.</p><p id="muzm3s_14">T is a common placeholder name, but you can use any identifier.</p><div class="code-block" data-lang="ts">
+class DataStore&lt;T&gt; {
+  private data: T[] = [];
+
+  addItem(item: T): void {
+    this.data.push(item);
+  }
+
+  getItem(idx: number): T | null {
+    if (idx &lt; 0 || idx &gt;= this.data.length) return null;
+    return this.data[idx];
+  }
+
+  getAllItems(): T[] {
+    return this.data;
+  }
+}
+
+const names = new DataStore&lt;string&gt;();
+names.addItem(&quot;John&quot;);
+names.addItem(&quot;June&quot;);
+console.log(names.getAllItems());
+
+interface User {
+  name: string;
+  age: number;
+}
+
+const users = new DataStore&lt;User&gt;();
+users.addItem({ name: &quot;john&quot;, age: 25 });
+users.addItem({ name: &quot;jane&quot;, age: 35 });
+users.addItem({ name: &quot;jack&quot;, age: 55 });
+console.log(users.getAllItems());
+</div><section class="chapter"><h2 id="generic-types" data-toc="generic-types">Generic Types</h2><section class="chapter"><h3 id="using-generics-in-functions" data-toc="using-generics-in-functions">Using generics in functions</h3><p id="muzm3s_22">A generic function uses a type parameter (<code class="code" id="muzm3s_26">&lt;T&gt;</code>) to allow flexibility while maintaining type safety.</p><div class="code-block" data-lang="ts">
+function printItem&lt;T&gt;(item: T): T {
+  return item;
+}
+console.log(printItem&lt;string&gt;(&quot;John&quot;));
+console.log(printItem&lt;number&gt;(25));
+
+interface User {
+  name: string;
+  age: number;
+}
+
+console.log(printItem&lt;User&gt;({ name: &quot;John&quot;, age: 33 }));
+</div><p id="muzm3s_24"><span class="control" id="muzm3s_27">Note: TypeScript can infer the type from the argument, so we don&rsquo;t always need to specify it.</span></p><div class="code-block" data-lang="ts">
+console.log(printItem(&quot;John&quot;));
+console.log(printItem(25));
+console.log(printItem({ name: &quot;John&quot;, age: 33 }));
+</div></section><section class="chapter"><h3 id="using-generics-in-interfaces" data-toc="using-generics-in-interfaces">Using Generics in interfaces</h3><p id="muzm3s_28">We can also define interfaces with generics.</p><div class="code-block" data-lang="ts">
+interface Box&lt;T&gt; {
+  value: T;
+}
+
+const numberBox: Box&lt;number&gt; = { value: 55 };
+const stringBox: Box&lt;string&gt; = { value: &quot;Hello&quot; };
+console.log(numberBox, stringBox);
+</div><ul class="list _bullet" id="muzm3s_30"><li class="list__item" id="muzm3s_31"><p><code class="code" id="muzm3s_33">Box&lt;T&gt;</code> is a generic interface.</p></li><li class="list__item" id="muzm3s_32"><p><code class="code" id="muzm3s_34">T</code> allows it to store any type while ensuring consistency.</p></li></ul></section></section><section class="chapter"><h2 id="generic-constraints" data-toc="generic-constraints">Generic Constraints</h2><p id="muzm3s_35">By default, generics accept any type, but sometimes we want to restrict the allowed types.</p><section class="chapter"><h3 id="constraining-with-extends" data-toc="constraining-with-extends">Constraining with <code class="code" id="muzm3s_41">extends</code></h3><p id="muzm3s_39">We can limit the generic type to a specific type or structure using <code class="code" id="muzm3s_42">extends</code>.</p><div class="code-block" data-lang="ts">
+function processValue&lt;T extends string | number&gt;(value: T) {
+  if (typeof value === &quot;string&quot;) {
+    console.log(value.toUpperCase());
+  } else if (typeof value === &quot;number&quot;) {
+    console.log(value * 1000);
+  }
+}
+
+processValue(&quot;john&quot;);
+processValue(25);
+processValue(true); // will not work
+</div></section><section class="chapter"><h3 id="constraining-to-specific-object-types" data-toc="constraining-to-specific-object-types">Constraining to Specific Object Types</h3><p id="muzm3s_43">We can make sure that objects have specific properties using <code class="code" id="muzm3s_45">extends</code> as shown:</p><div class="code-block" data-lang="ts">
+interface Id {
+  id: number;
+}
+
+function printUserInfo&lt;T extends Id&gt;(user: T) {
+  console.log(user);
+}
+
+printUserInfo({ id: 55, name: &quot;John&quot; });
+printUserInfo({ id: 155, name: &quot;Jack&quot;, age: 55, department: &quot;Engineering&quot; }); // works
+// printUserInfo({name: &quot;June&quot;}); // will not work because the passed object has no id property
+</div></section></section><div class="last-modified">Last modified: 25 February 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="classes.html" class="navigation-links__prev">Classes</a><a href="utility-types.html" class="navigation-links__next">Utility Types</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.js"></script></body></html>

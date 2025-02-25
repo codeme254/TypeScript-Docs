@@ -1,0 +1,50 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-02-25T09:05:54.7202608"><title>Top Types | TypeScript</title><script type="application/json" id="virtual-toc-data">[{"id":"any","level":0,"title":"any","anchor":"#any"},{"id":"unknown","level":0,"title":"unknown","anchor":"#unknown"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Top Types | TypeScript"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="TypeScript Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/top-types.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Top Types | TypeScript"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/top-types.html#webpage",
+    "url": "writerside-documentation/top-types.html",
+    "name": "Top Types | TypeScript",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "TypeScript Help"
+}</script><!-- End Schema.org --></head><body data-id="Top-Types" data-main-title="Top Types" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="TypeScript-Types.md|TypeScript Types"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>TypeScript  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Top-Types" id="Top-Types.md">Top Types</h1><p id="-8t8tkr_3">In TypeScript, top types are types that can represent any value.</p><p id="-8t8tkr_4">They can accept any value without causing a type error.</p><p id="-8t8tkr_5">The two top types in TypeScript are:</p><ul class="list _bullet" id="-8t8tkr_6"><li class="list__item" id="-8t8tkr_9"><p><code class="code" id="-8t8tkr_11">any</code>: the most permissive types.</p></li><li class="list__item" id="-8t8tkr_10"><p><code class="code" id="-8t8tkr_12">unknown</code>: a safer alternative to <code class="code" id="-8t8tkr_13">any</code>.</p></li></ul><section class="chapter"><h2 id="any" data-toc="any"><code class="code" id="-8t8tkr_18">any</code></h2><p id="-8t8tkr_15">The <code class="code" id="-8t8tkr_19">any</code> type allows you to assign any value to a variable and perform any operation on it without TypeScript complaining.</p><div class="code-block" data-lang="ts">
+let myVar: any = 55;
+console.log(myVar); // 55
+
+myVar = &quot;Hello, World&quot;;
+console.log(myVar); // Hello, World
+
+myVar = [3, 12, 55];
+console.log(myVar); // [3, 12, 55]
+
+myVar = {}
+console.log(myVar); // {}
+
+console.log(myVar.toUpperCase()); // no error thrown
+</div><p id="-8t8tkr_17">Avoid using the <code class="code" id="-8t8tkr_20">any</code> type most of the time because it disables type checking, making TypeScript useless.</p></section><section class="chapter"><h2 id="unknown" data-toc="unknown"><code class="code" id="-8t8tkr_26">unknown</code></h2><p id="-8t8tkr_22">The <code class="code" id="-8t8tkr_27">unknown</code> type is like any, but it forces you to check the type before using it.</p><div class="code-block" data-lang="ts">
+let myVar: unknown = 55;
+console.log(myVar); // 55
+
+myVar = &quot;Hello, World&quot;;
+console.log(myVar); // Hello, World
+
+myVar = [3, 12, 55];
+console.log(myVar); // [3, 12, 55]
+
+myVar = {}
+console.log(myVar); // {}
+
+console.log(myVar.toUpperCase()); // throws an error
+</div><p id="-8t8tkr_24"><code class="code" id="-8t8tkr_28">Unknown</code> type forces you to check a value before using it:</p><div class="code-block" data-lang="ts">
+let myVar: unknown = &quot;Hello&quot;;
+// console.log(myVar.toUpperCase()); // throws an error
+if (typeof myVar === &quot;string&quot;) {
+  console.log(myVar.toUpperCase()); // works fine
+}
+</div></section><div class="last-modified">Last modified: 25 February 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="primitive-types.html" class="navigation-links__prev">Primitive Types</a><a href="bottom-types.html" class="navigation-links__next">Bottom Types</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.js"></script></body></html>

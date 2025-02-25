@@ -1,0 +1,111 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-02-25T09:05:54.6998048"><title>Utility Types | TypeScript</title><script type="application/json" id="virtual-toc-data">[{"id":"partial-partial-t","level":0,"title":"Partial (Partial\u003cT\u003e)","anchor":"#partial-partial-t"},{"id":"pick-pick-t-k","level":0,"title":"Pick (Pick\u003cT, K\u003e)","anchor":"#pick-pick-t-k"},{"id":"omit-omit-t-k","level":0,"title":"Omit (Omit\u003cT, K\u003e)","anchor":"#omit-omit-t-k"},{"id":"readonly-readonly-t","level":0,"title":"Readonly (Readonly\u003cT\u003e)","anchor":"#readonly-readonly-t"},{"id":"record-record-k-t","level":0,"title":"Record (`Record\u003cK, T\u003e)","anchor":"#record-record-k-t"},{"id":"exclude-exclude-t-u","level":0,"title":"Exclude (Exclude\u003cT, U\u003e)","anchor":"#exclude-exclude-t-u"},{"id":"extract-extract-t-u","level":0,"title":"Extract (Extract(T, U\u003e))","anchor":"#extract-extract-t-u"},{"id":"nonnullable-nonnullable-t","level":0,"title":"NonNullable (NonNullable\u003cT\u003e)","anchor":"#nonnullable-nonnullable-t"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Utility Types | TypeScript"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="TypeScript Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/utility-types.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Utility Types | TypeScript"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/utility-types.html#webpage",
+    "url": "writerside-documentation/utility-types.html",
+    "name": "Utility Types | TypeScript",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "TypeScript Help"
+}</script><!-- End Schema.org --></head><body data-id="Utility-Types" data-main-title="Utility Types" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>TypeScript  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Utility-Types" id="Utility-Types.md">Utility Types</h1><p id="xmq366_3">Utility types are built-in types that enable you to transform and manipulate existing types in various ways.</p><section class="chapter"><h2 id="partial-partial-t" data-toc="partial-partial-t">Partial (<code class="code" id="xmq366_15">Partial&lt;T&gt;</code>)</h2><p id="xmq366_13">Partial utility type takes an exiting type and makes all its properties optional.</p><div class="code-block" data-lang="ts">
+interface User {
+  name: string;
+  age: number;
+  location: string;
+}
+
+const alice: Partial&lt;User&gt; = {};
+console.log(alice); // works
+
+const john: Partial&lt;User&gt; = {
+  name: &quot;John&quot;,
+};
+
+console.log(john); // works
+</div></section><section class="chapter"><h2 id="pick-pick-t-k" data-toc="pick-pick-t-k">Pick (<code class="code" id="xmq366_21">Pick&lt;T, K&gt;</code>)</h2><p id="xmq366_17">Creates a new type by selecting a subset of properties <code class="code" id="xmq366_22">K</code> from type <code class="code" id="xmq366_23">T</code>.</p><p id="xmq366_18">Useful for extracting specific properties from a type.</p><div class="code-block" data-lang="ts">
+interface User {
+  name: string;
+  emailAddress: string;
+  age: number;
+  location: string;
+}
+
+type Student = Pick&lt;User, &quot;name&quot; | &quot;emailAddress&quot; | &quot;age&quot;&gt;;
+
+const john: Student = {
+  name: &quot;John Doe&quot;,
+  emailAddress: &quot;john@gmail.com&quot;,
+  age: 24,
+};
+
+console.log(john);
+</div><p id="xmq366_20">We extract <code class="code" id="xmq366_24">name</code>, <code class="code" id="xmq366_25">emailAddress</code> and <code class="code" id="xmq366_26">age</code> from type <code class="code" id="xmq366_27">User</code> to make another type <code class="code" id="xmq366_28">Student</code>.</p></section><section class="chapter"><h2 id="omit-omit-t-k" data-toc="omit-omit-t-k">Omit (<code class="code" id="xmq366_33">Omit&lt;T, K&gt;</code>)</h2><p id="xmq366_30">Creates a new type by omitting specific properties <code class="code" id="xmq366_34">K</code> from type <code class="code" id="xmq366_35">T</code>.</p><p id="xmq366_31">Helpful when you want most properties from an existing type except a few.</p><div class="code-block" data-lang="ts">
+interface User {
+  name: string;
+  emailAddress: string;
+  age: number;
+  location: string;
+}
+
+type Student = Omit&lt;User, &quot;location&quot;&gt;;
+
+const john: Student = {
+  name: &quot;John Doe&quot;,
+  emailAddress: &quot;john@gmail.com&quot;,
+  age: 24,
+};
+
+console.log(john);
+</div></section><section class="chapter"><h2 id="readonly-readonly-t" data-toc="readonly-readonly-t">Readonly (<code class="code" id="xmq366_40">Readonly&lt;T&gt;</code>)</h2><p id="xmq366_37">The <code class="code" id="xmq366_41">ReadOnly&lt;T&gt;</code> utility makes all properties <span class="control" id="xmq366_42">immutable</span>.</p><p id="xmq366_38">This means that these properties cannot be reassigned once created.</p><div class="code-block" data-lang="ts">
+interface User {
+  name: string;
+  emailAddress: string;
+  age: number;
+  location: string;
+}
+
+const john: Readonly&lt;User&gt; = {
+  name: &quot;John Doe&quot;,
+  emailAddress: &quot;john@gmail.com&quot;,
+  age: 55,
+  location: &quot;Fake ST&quot;,
+};
+
+john.age = 55; 
+// Error: Cannot assign to 'age' because it is a read-only property
+</div></section><section class="chapter"><h2 id="record-record-k-t" data-toc="record-record-k-t">Record (`Record&lt;K, T&gt;)</h2><p id="xmq366_43">Constructs an object type with keys <code class="code" id="xmq366_46">K</code> and values of type `T.</p><p id="xmq366_44">It is used to specify the type for keys and values.</p><div class="code-block" data-lang="ts">
+type Role = &quot;admin&quot; | &quot;user&quot; | &quot;guest&quot;;
+// Ensures that only admin, user, and guest keys exist
+// and their values are an array of strings
+type Permission = Record&lt;Role, string[]&gt;;
+
+// now, any object created with type 'Permission'
+// should have keys being either admin, user or guest
+
+const appPermissions: Permission = {
+  admin: [&quot;Read&quot;, &quot;Write&quot;, &quot;Delete&quot;],
+  user: [&quot;Read&quot;, &quot;Write&quot;],
+  guest: [&quot;Read&quot;],
+};
+
+console.log(appPermissions);
+</div></section><section class="chapter"><h2 id="exclude-exclude-t-u" data-toc="exclude-exclude-t-u">Exclude (<code class="code" id="xmq366_51">Exclude&lt;T, U&gt;</code>)</h2><p id="xmq366_48">The <code class="code" id="xmq366_52">Exclude&lt;T, U&gt;</code> utility removes specific types from a union.</p><p id="xmq366_49">It removes type(s) <code class="code" id="xmq366_53">U</code> from union <code class="code" id="xmq366_54">T</code></p><div class="code-block" data-lang="ts">
+type UserType = &quot;admin&quot; | &quot;user&quot; | &quot;guest&quot; | &quot;child&quot; | &quot;other&quot;;
+type AllowedTypes = Exclude&lt;UserType, &quot;child&quot; | &quot;other&quot;&gt;;
+// removes &quot;child&quot;, &quot;other&quot;
+</div></section><section class="chapter"><h2 id="extract-extract-t-u" data-toc="extract-extract-t-u">Extract (<code class="code" id="xmq366_58">Extract(T, U&gt;</code>))</h2><p id="xmq366_56">The <code class="code" id="xmq366_59">Extract&lt;T, U&gt;</code> utility keeps only the types that match.</p><div class="code-block" data-lang="ts">
+type UserType = &quot;admin&quot; | &quot;user&quot; | &quot;guest&quot; | &quot;child&quot; | &quot;other&quot;;
+type AllowedTypes = Extract&lt;UserType, &quot;admin&quot; | &quot;user&quot; | &quot;guest&quot;&gt;;
+// removes &quot;child&quot;, &quot;other&quot;
+</div></section><section class="chapter"><h2 id="nonnullable-nonnullable-t" data-toc="nonnullable-nonnullable-t">NonNullable (<code class="code" id="xmq366_63">NonNullable&lt;T&gt;</code>)</h2><p id="xmq366_61">The <code class="code" id="xmq366_64">NonNullable&lt;T&gt;</code> utility removes <code class="code" id="xmq366_65">null</code> and <code class="code" id="xmq366_66">undefined</code> from a type.</p><div class="code-block" data-lang="ts">
+type UserEmail = string | null | undefined;
+type ValidEmail = NonNullable&lt;UserEmail&gt;;
+
+const johnEmail: ValidEmail = &quot;john@gmail.com&quot;;
+</div></section><div class="last-modified">Last modified: 25 February 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="generics.html" class="navigation-links__prev">Generics</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.js"></script></body></html>

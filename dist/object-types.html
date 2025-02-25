@@ -1,0 +1,184 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-02-25T09:05:54.6998048"><title>Object Types | TypeScript</title><script type="application/json" id="virtual-toc-data">[{"id":"interface","level":0,"title":"Interface","anchor":"#interface"},{"id":"class","level":0,"title":"Class","anchor":"#class"},{"id":"enum","level":0,"title":"Enum","anchor":"#enum"},{"id":"array","level":0,"title":"Array","anchor":"#array"},{"id":"tuple","level":0,"title":"Tuple","anchor":"#tuple"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Object Types | TypeScript"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="TypeScript Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/object-types.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Object Types | TypeScript"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/object-types.html#webpage",
+    "url": "writerside-documentation/object-types.html",
+    "name": "Object Types | TypeScript",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "TypeScript Help"
+}</script><!-- End Schema.org --></head><body data-id="Object-Types" data-main-title="Object Types" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="TypeScript-Types.md|TypeScript Types"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>TypeScript  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Object-Types" id="Object-Types.md">Object Types</h1><p id="-dao8p3_3">In TypeScript, object types define the shape of complex values.</p><p id="-dao8p3_4">The most common object types include:</p><ol class="list _decimal" id="-dao8p3_5" type="1"><li class="list__item" id="-dao8p3_11"><p><span class="control" id="-dao8p3_16">Interface</span> - Defines a shape for an object structure.</p></li><li class="list__item" id="-dao8p3_12"><p><span class="control" id="-dao8p3_17">Class</span> - Defines blueprints for creating objects.</p></li><li class="list__item" id="-dao8p3_13"><p><span class="control" id="-dao8p3_18">Enum</span> - Represents a set of named constant values.</p></li><li class="list__item" id="-dao8p3_14"><p><span class="control" id="-dao8p3_19">Array</span>&mdash;Represents a collection of elements that are of the same type.</p></li><li class="list__item" id="-dao8p3_15"><p><span class="control" id="-dao8p3_20">Tuple</span> - Represents an ordered list of elements with fixed types and lengths.</p></li></ol><section class="chapter"><h2 id="interface" data-toc="interface">Interface</h2><p id="-dao8p3_21">An interface defines the structure of an object.</p><p id="-dao8p3_22">It&rsquo;s used for type checking objects and enforcing consistency.</p><div class="code-block" data-lang="ts">
+interface User {
+  firstName: string;
+  lastName: string;
+  age: number;
+  isAdmin: boolean;
+}
+
+const john: User = {
+  firstName: &quot;John&quot;,
+  lastName: &quot;Doe&quot;,
+  age: 25,
+  isAdmin: false,
+};
+</div><section class="chapter"><h3 id="optional-properties-for-interface" data-toc="optional-properties-for-interface">Optional properties for interface</h3><p id="-dao8p3_27">We can use <code class="code" id="-dao8p3_30">?</code> to show optional properties.</p><p id="-dao8p3_28">In the example below, <code class="code" id="-dao8p3_31">isAdmin</code> property is optional:</p><div class="code-block" data-lang="ts">
+interface User {
+  firstName: string;
+  lastName: string;
+  age: number;
+  isAdmin?: boolean;
+}
+
+const john: User = {
+  firstName: &quot;John&quot;,
+  lastName: &quot;Doe&quot;,
+  age: 25,
+};
+
+console.log(john);
+</div></section><section class="chapter"><h3 id="readonly-properties-for-interfaces" data-toc="readonly-properties-for-interfaces">Readonly properties for interfaces</h3><p id="-dao8p3_32">Use the <code class="code" id="-dao8p3_34">readonly</code> keyword for properties that should not be modified.</p><div class="code-block" data-lang="ts">
+interface User {
+  firstName: string;
+  lastName: string;
+  age: number;
+  readonly isAdmin: boolean;
+}
+
+const john: User = {
+  firstName: &quot;John&quot;,
+  lastName: &quot;Doe&quot;,
+  age: 25,
+  isAdmin: false
+};
+
+// john.isAdmin = true;
+// cannot assign to 'isAdmin' because it is a read-only property
+console.log(john);
+</div></section><section class="chapter"><h3 id="extending-interfaces" data-toc="extending-interfaces">Extending interfaces</h3><p id="-dao8p3_35">Extending interfaces means creating a new interface that inherits properties from an existing one, allowing for reuse.</p><p id="-dao8p3_36">Use the <code class="code" id="-dao8p3_38">extends</code> keyword.</p><div class="code-block" data-lang="ts">
+interface User {
+  firstName: string;
+  lastName: string;
+  age: number;
+  readonly isAdmin: boolean;
+}
+
+interface Employee extends User {
+  employeeId: string;
+  department: string;
+  role: string;
+}
+
+const jane: Employee = {
+  firstName: &quot;Jane&quot;,
+  lastName: &quot;Doe&quot;,
+  age: 35,
+  isAdmin: false,
+  employeeId: &quot;EMP0035LKV&quot;,
+  department: &quot;Engineering&quot;,
+  role: &quot;Developer&quot;,
+};
+
+console.log(jane);
+</div></section></section><section class="chapter"><h2 id="class" data-toc="class">Class</h2><p id="-dao8p3_39">A class is a blueprint for creating objects with properties and methods.</p><p id="-dao8p3_40">When creating a class in TypeScript, we start by defining the properties then initialize those properties in the constructor function.</p><div class="code-block" data-lang="ts">
+class User {
+  firstName: string;
+  lastName: string;
+  age: number;
+
+  constructor(firstName: string, lastName: string, age: number) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+  }
+
+  printInformation() {
+    console.log(`My name is ${this.firstName} ${this.lastName}. I am ${this.age} years old`,);
+  }
+}
+
+const john: User = new User(&quot;John&quot;, &quot;Doe&quot;, 35);
+john.printInformation();
+</div><p id="-dao8p3_42">We will learn more about classes in TypeScript later.</p></section><section class="chapter"><h2 id="enum" data-toc="enum">Enum</h2><p id="-dao8p3_43">An enum is a special type that defines a set of named constants.</p><p id="-dao8p3_44">Enums can help prevent invalid values and ensure consistency.</p><p id="-dao8p3_45">There are two types of enums:</p><ul class="list _bullet" id="-dao8p3_46"><li class="list__item" id="-dao8p3_49"><p>Numeric enums</p></li><li class="list__item" id="-dao8p3_50"><p>String enums</p></li></ul><section class="chapter"><h3 id="numeric-enums" data-toc="numeric-enums">Numeric Enums</h3><p id="-dao8p3_51">Numeric enums in TypeScript assign numerical values to their members, starting from 0 with subsequent members auto-incrementing.</p><div class="code-block" data-lang="ts">
+enum PizzaSize {
+  Small, // 0
+  Medium, // 1
+  Large, // 2
+  ExtraLarge, // 3
+}
+
+console.log(PizzaSize.Small); // 0
+console.log(PizzaSize.ExtraLarge); // 3
+
+let orderedPizzaSize: PizzaSize = 0;
+
+if (orderedPizzaSize === PizzaSize.Small) {
+  console.log(`Pay $5`);
+}
+</div><p id="-dao8p3_53">Numeric enums start from 0 and the rest of the elements automatically increment by 1, we can change the starting point as shown:</p><div class="code-block" data-lang="ts">
+enum PizzaSize {
+  Small = 100,
+  Medium,
+  Large,
+  ExtraLarge,
+}
+
+console.log(PizzaSize.Small); // 100
+console.log(PizzaSize.Medium); // 101
+console.log(PizzaSize.Large); // 102
+console.log(PizzaSize.ExtraLarge); // 103
+
+</div><p id="-dao8p3_55">We can also set completely custom integer values as shown:</p><div class="code-block" data-lang="ts">
+enum PizzaSize {
+  Small = 100,
+  Medium = 200,
+  Large = 300,
+  ExtraLarge = 400,
+}
+
+console.log(PizzaSize.Small); // 100
+console.log(PizzaSize.Medium); // 200
+console.log(PizzaSize.Large); // 300
+console.log(PizzaSize.ExtraLarge); // 400
+</div></section><section class="chapter"><h3 id="string-enums" data-toc="string-enums">String Enums</h3><p id="-dao8p3_57">String enums in TypeScript assign string values to their members explicitly, ensuring each member holds a unique string value.</p><div class="code-block" data-lang="ts">
+enum PizzaSize {
+  Small = &quot;Small&quot;,
+  Medium = &quot;Medium&quot;,
+  Large = &quot;Large&quot;,
+  ExtraLarge = &quot;ExtraLarge&quot;,
+}
+
+console.log(PizzaSize.Small); // Small
+console.log(PizzaSize.Medium); // Medium
+console.log(PizzaSize.Large); // Large
+console.log(PizzaSize.ExtraLarge); // ExtraLarge
+</div></section></section><section class="chapter"><h2 id="array" data-toc="array">Array</h2><p id="-dao8p3_59">An array is a collection of elements that have the same type.</p><div class="code-block" data-lang="ts">
+let luckyNumbers: number[] = [33, 28, 23, 5, 96, 68];
+console.log(luckyNumbers);
+</div><p id="-dao8p3_61">If you want your array to hold items of various data types, you can specify these data types using the <span class="control" id="-dao8p3_63">union type</span> (more about union type later).</p><div class="code-block" data-lang="ts">
+let luckyNumbers: (number | string | boolean)[] = [&quot;cat&quot;, 5, true, 96];
+console.log(luckyNumbers);
+</div></section><section class="chapter"><h2 id="tuple" data-toc="tuple">Tuple</h2><p id="-dao8p3_64">A tuple is a special kind of array with fixed types and a fixed number of elements.</p><p id="-dao8p3_65"><span class="control" id="-dao8p3_69">Example: defining an array:</span></p><div class="code-block" data-lang="ts">
+let userInfo: [string, number] = [&quot;John&quot;, 25];
+console.log(userInfo);
+</div><section class="chapter"><h3 id="named-tuples" data-toc="named-tuples">Named Tuples</h3><p id="-dao8p3_70">Named tuples in TypeScript allow you to give labels to tuple elements, improving readability and maintainability.</p><p id="-dao8p3_71">Compare:</p><div class="code-block" data-lang="ts">
+let border: [string, string, string] = [&quot;3px&quot;, &quot;solid&quot;, &quot;red&quot;];
+console.log(border);
+</div><p id="-dao8p3_73">With:</p><div class="code-block" data-lang="ts">
+let border: [width: string, style: string, color: string];
+border = [&quot;3px&quot;, &quot;solid&quot;, &quot;red&quot;];
+console.log(border);
+</div></section><section class="chapter"><h3 id="tuples-with-optional-elements" data-toc="tuples-with-optional-elements">Tuples with optional elements</h3><p id="-dao8p3_75">To specify that an element of a tuple is optional, use <code class="code" id="-dao8p3_79">?</code>.</p><div class="code-block" data-lang="ts">
+let border: [string, string, string?];
+border = [&quot;3px&quot;, &quot;solid&quot;];
+console.log(border);
+</div><p id="-dao8p3_77">For named tuples:</p><div class="code-block" data-lang="ts">
+let border: [width: string, style: string, color?: string];
+border = [&quot;3px&quot;, &quot;solid&quot;, &quot;red&quot;];
+console.log(border);
+</div></section></section><div class="last-modified">Last modified: 25 February 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="bottom-types.html" class="navigation-links__prev">Bottom Types</a><a href="type-inference.html" class="navigation-links__next">Type Inference</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.js"></script></body></html>

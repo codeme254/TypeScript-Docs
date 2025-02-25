@@ -1,0 +1,130 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-02-25T09:05:54.7327896"><title>Typing Functions | TypeScript</title><script type="application/json" id="virtual-toc-data">[{"id":"typing-function-parameters","level":0,"title":"Typing Function Parameters","anchor":"#typing-function-parameters"},{"id":"typing-return-values","level":0,"title":"Typing Return Values","anchor":"#typing-return-values"},{"id":"function-type-signatures","level":0,"title":"Function Type Signatures","anchor":"#function-type-signatures"},{"id":"optional-and-default-parameters","level":0,"title":"Optional and Default Parameters","anchor":"#optional-and-default-parameters"},{"id":"function-overloads","level":0,"title":"Function Overloads","anchor":"#function-overloads"},{"id":"rest-parameters","level":0,"title":"Rest Parameters","anchor":"#rest-parameters"},{"id":"typing-callback-functions","level":0,"title":"Typing Callback Functions","anchor":"#typing-callback-functions"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Typing Functions | TypeScript"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="TypeScript Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/typing-functions.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Typing Functions | TypeScript"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/typing-functions.html#webpage",
+    "url": "writerside-documentation/typing-functions.html",
+    "name": "Typing Functions | TypeScript",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "TypeScript Help"
+}</script><!-- End Schema.org --></head><body data-id="Typing-Functions" data-main-title="Typing Functions" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>TypeScript  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Typing-Functions" id="Typing-Functions.md">Typing Functions</h1><p id="-lv23a9_3">In TypeScript, functions can be strongly typed to improve code reliability.</p><p id="-lv23a9_4">Function typing includes:</p><ul class="list _bullet" id="-lv23a9_5"><li class="list__item" id="-lv23a9_13"><p>Specifying parameter types</p></li><li class="list__item" id="-lv23a9_14"><p>Specifying return types</p></li><li class="list__item" id="-lv23a9_15"><p>Using function signatures</p></li><li class="list__item" id="-lv23a9_16"><p>Working with optional and default parameters</p></li><li class="list__item" id="-lv23a9_17"><p>Handling function overloads</p></li></ul><section class="chapter"><h2 id="typing-function-parameters" data-toc="typing-function-parameters">Typing Function Parameters</h2><p id="-lv23a9_18">You can specify the type of each function parameter.</p><div class="code-block" data-lang="ts">
+function add(a: number, b: number) {
+  console.log(a + b);
+}
+
+add(5, 12);
+</div><p id="-lv23a9_20">In this example, <code class="code" id="-lv23a9_21">a: number</code> and <code class="code" id="-lv23a9_22">b: number</code> define parameter types.</p></section><section class="chapter"><h2 id="typing-return-values" data-toc="typing-return-values">Typing Return Values</h2><p id="-lv23a9_23">You can specify return types to ensure type safety.</p><div class="code-block" data-lang="ts">
+function add(a: number, b: number): number {
+  return a + b;
+}
+
+add(5, 12);
+</div><p id="-lv23a9_25">If a function does not return anything, use <code class="code" id="-lv23a9_27">void</code>.</p><div class="code-block" data-lang="ts">
+function add(a: number, b: number): void {
+  console.log(a + b);
+}
+
+add(5, 12);
+</div></section><section class="chapter"><h2 id="function-type-signatures" data-toc="function-type-signatures">Function Type Signatures</h2><p id="-lv23a9_28">You can define a function type separately and assign it to variables.</p><div class="code-block" data-lang="ts">
+type MathOperation = (a: number, b: number) =&gt; number;
+
+const add: MathOperation = function (number1, number2) {
+  return number1 + number2;
+};
+console.log(add(5, 5));
+
+const multiply: MathOperation = function (number1, number2) {
+  return number1 * number2;
+};
+console.log(multiply(5, 5));
+
+const divide: MathOperation = function (number1, number2) {
+  return number1 / number2;
+};
+console.log(divide(5, 5));
+</div><p id="-lv23a9_30">This ensures that any function assigned to MathOperation follows the same parameter and return type structure.</p></section><section class="chapter"><h2 id="optional-and-default-parameters" data-toc="optional-and-default-parameters">Optional and Default Parameters</h2><ul class="list _bullet" id="-lv23a9_31"><li class="list__item" id="-lv23a9_34"><p><span class="control" id="-lv23a9_36">Optional parameters</span>: Use <code class="code" id="-lv23a9_37">?</code> after a parameter name to make it optional.</p></li><li class="list__item" id="-lv23a9_35"><p><span class="control" id="-lv23a9_38">Default parameters</span>: Assign a default value to the parameters.</p></li></ul><section class="chapter"><h3 id="optional-parameter" data-toc="optional-parameter">Optional parameter</h3><div class="code-block" data-lang="ts">
+function greet(name: string, greeting?: string): void {
+  if (greeting) {
+    console.log(`${greeting} ${name}`);
+  } else {
+    console.log(`Hello, ${name}`);
+  }
+}
+
+greet(&quot;John&quot;);
+greet(&quot;John&quot;, &quot;Howdy&quot;);
+</div><p id="-lv23a9_40"><span class="control" id="-lv23a9_41">Note: required parameters should never follow optional parameters</span></p></section><section class="chapter"><h3 id="default-parameter" data-toc="default-parameter">Default parameter</h3><div class="code-block" data-lang="ts">
+function greet(name: string, greeting: string = &quot;Hello&quot;): void {
+  console.log(`${greeting} ${name}`);
+}
+
+greet(&quot;John&quot;);
+greet(&quot;John&quot;, &quot;Howdy&quot;);
+</div><p id="-lv23a9_43"><span class="control" id="-lv23a9_44">Note: Default parameters should always come last</span></p></section></section><section class="chapter"><h2 id="function-overloads" data-toc="function-overloads">Function Overloads</h2><p id="-lv23a9_45">Function overloading allows multiple function signatures with different types.</p><div class="code-block" data-lang="ts">
+function processInput(input: number): void;
+function processInput(input: string): void;
+function processInput(input: boolean): void;
+
+function processInput(input: number | string | boolean) {
+  if (typeof input === &quot;number&quot;) {
+    console.log(input * 10);
+  } else if (typeof input === &quot;string&quot;) {
+    console.log(input.toUpperCase());
+  } else if (typeof input === &quot;boolean&quot;) {
+    console.log(input);
+  }
+}
+
+processInput(55);
+processInput(&quot;hello&quot;);
+processInput(true);
+</div></section><section class="chapter"><h2 id="rest-parameters" data-toc="rest-parameters">Rest Parameters</h2><p id="-lv23a9_47">Rest parameters allow passing multiple arguments into a function.</p><p id="-lv23a9_48">These values are collected into an array which we can type as shown:</p><div class="code-block" data-lang="ts">
+function sum() {
+  var numbers = [];
+  for (var _i = 0; _i &lt; arguments.length; _i++) {
+    numbers[_i] = arguments[_i];
+  }
+  var total = 0;
+  numbers.forEach(function (number) {
+    total += number;
+  });
+  return total;
+}
+console.log(sum(3, 5));
+console.log(sum(3));
+console.log(sum(12, 44, 1, 18, 99, 55));
+console.log(sum());
+</div></section><section class="chapter"><h2 id="typing-callback-functions" data-toc="typing-callback-functions">Typing Callback Functions</h2><p id="-lv23a9_50">A callback function is a function that is passed as an argument to another function.</p><p id="-lv23a9_51">We can type callback functions in TypeScript:</p><section class="chapter"><h3 id="basic-syntax-for-typing-callback-functions" data-toc="basic-syntax-for-typing-callback-functions">Basic Syntax for Typing Callback functions</h3><p id="-lv23a9_55">Use <code class="code" id="-lv23a9_57">() =&gt; void</code> to define a function type (that returns nothing in this case):</p><div class="code-block" data-lang="ts">
+function greet(name: string, callback: () =&gt; void): void {
+  console.log(`Hello, ${name}`);
+  callback();
+}
+
+greet(&quot;John Doe&quot;, function () {
+  console.log(&quot;Good bye&quot;);
+});
+</div></section><section class="chapter"><h3 id="callback-with-a-parameter" data-toc="callback-with-a-parameter">Callback with a parameter</h3><div class="code-block" data-lang="ts">
+function greet(name: string, callback: (message: string) =&gt; void): void {
+  console.log(`Hello ${name}`);
+  callback(`You are a great person ${name}`);
+}
+
+greet(&quot;John Doe&quot;, function (message: string) {
+  console.log(message);
+});
+</div><p id="-lv23a9_59">The callback receives a string <code class="code" id="-lv23a9_60">message</code> and logs it.</p></section><section class="chapter"><h3 id="callback-that-returns-a-value" data-toc="callback-that-returns-a-value">Callback that returns a value</h3><div class="code-block" data-lang="ts">
+function greet(name: string, callback: (message: string) =&gt; string): void {
+  console.log(`Hello ${name}`);
+  callback(`You are a great person ${name}`);
+}
+
+greet(&quot;John Doe&quot;, function (message: string) {
+  return message;
+});
+</div><p id="-lv23a9_62"><span class="emphasis" id="-lv23a9_63">experiment callbacks with optional parameters and default parameters</span></p></section></section><div class="last-modified">Last modified: 25 February 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="literal-types.html" class="navigation-links__prev">Literal Types</a><a href="type-guards-narrowing.html" class="navigation-links__next">Type Guards/Narrowing</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.js"></script></body></html>
